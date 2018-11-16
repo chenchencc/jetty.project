@@ -385,7 +385,7 @@ public class QueuedThreadPool extends AbstractLifeCycle implements SizedThreadPo
         else
         {
             // Make sure there is at least one thread executing the job.
-            if (getThreads() == 0)
+            if (getThreads() == 0)//
                 startThreads(1);
         }
     }

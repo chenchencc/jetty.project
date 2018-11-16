@@ -95,7 +95,7 @@ public class ExecuteProduceConsume extends ExecutingExecutionStrategy implements
                 _execute = true;
             }
         }
-
+        //生产
         if (produce)
             produceConsume();
     }
@@ -245,7 +245,7 @@ public class ExecuteProduceConsume extends ExecutingExecutionStrategy implements
             // If we got here, then we are the thread that is producing.
             if (LOG.isDebugEnabled())
                 LOG.debug("{} producing", this);
-
+            //TODO
             Runnable task = _producer.produce();
 
             if (LOG.isDebugEnabled())
