@@ -1071,7 +1071,7 @@ public class ContextHandler extends ScopedHandler implements Attributes, Gracefu
                 }
             }
 
-            // Set the classloader
+            // Set the classloader  为什么要重新设置类加载器呢？
             if (_classLoader != null)
             {
                 current_thread = Thread.currentThread();

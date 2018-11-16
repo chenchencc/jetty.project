@@ -77,7 +77,7 @@ public abstract class AbstractNetworkConnector extends AbstractConnector impleme
     @Override
     protected void doStart() throws Exception
     {
-        open();
+        open();//打开一个Channel
         super.doStart();
     }
 

@@ -513,21 +513,21 @@ public class Server extends HandlerWrapper implements Attributes
     }
 
     /* ------------------------------------------------------------ */
-    /* Handle a request from a connection.
+    /* Handle a request from a connection.  根据链接信息处理request请求
      * Called to handle a request on the connection when either the header has been received,
      * or after the entire request has been received (for short requests of known length), or
      * on the dispatch of an async request.
      */
     public void handle(HttpChannel channel) throws IOException, ServletException
     {
-        final String target=channel.getRequest().getPathInfo();
-        final Request request=channel.getRequest();
-        final Response response=channel.getResponse();
+        final String target=channel.getRequest().getPathInfo();//获取request路径
+        final Request request=channel.getRequest();//从管道中读取请求Request
+        final Response response=channel.getResponse();//从管道中获取Response
 
         if (LOG.isDebugEnabled())
             LOG.debug("{} {} {} on {}", request.getDispatcherType(), request.getMethod(), target, channel);
 
-        if (HttpMethod.OPTIONS.is(request.getMethod()) || "*".equals(target))
+        if (HttpMethod.OPTIONS.is(request.getMethod()) || "*".equals(target))//获取请求方式
         {
             if (!HttpMethod.OPTIONS.is(request.getMethod()))
                 response.sendError(HttpStatus.BAD_REQUEST_400);
@@ -536,7 +536,7 @@ public class Server extends HandlerWrapper implements Attributes
                 handle(target, request, request, response);
         }
         else
-            handle(target, request, request, response);
+            handle(target, request, request, response);//处理请求
 
         if (LOG.isDebugEnabled())
             LOG.debug("handled={} async={} committed={} on {}", request.isHandled(),request.isAsyncStarted(),response.isCommitted(),channel);

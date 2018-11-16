@@ -105,6 +105,7 @@ public abstract class FillInterest
         if (LOG.isDebugEnabled())
             LOG.debug("{} fillable {}",this,callback);
         if (callback != null && _interested.compareAndSet(callback, null))
+            //TODO
             callback.succeeded();
         else if (LOG.isDebugEnabled())
             LOG.debug("{} lost race {}",this,callback);

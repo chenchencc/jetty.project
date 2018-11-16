@@ -38,6 +38,10 @@ import org.eclipse.jetty.util.component.Dumpable;
  * queue even if the task did not fire, which provides a huge benefit in the performance
  * of garbage collection in young generation.
  */
+
+/**
+ * 封装了JDK的ScheduledThreadPoolExecutor来实现定时任务执行器
+ */
 public class ScheduledExecutorScheduler extends AbstractLifeCycle implements Scheduler, Dumpable
 {
     private final String name;
@@ -72,7 +76,7 @@ public class ScheduledExecutorScheduler extends AbstractLifeCycle implements Sch
 
     @Override
     protected void doStart() throws Exception
-    {
+    {   //创建一个ScheduledThreadPoolExecutor对象
         scheduler = new ScheduledThreadPoolExecutor(1, new ThreadFactory()
         {
             @Override

@@ -131,7 +131,7 @@ public class HandlerWrapper extends AbstractHandlerContainer
     {
         Handler handler=_handler;
         if (handler!=null)
-            handler.handle(target,baseRequest, request, response);
+            handler.handle(target,baseRequest, request, response);//处理请求
     }
 
     /* ------------------------------------------------------------ */
